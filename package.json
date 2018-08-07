@@ -1,0 +1,32 @@
+{
+  "name": "humanized-robot",
+  "version": "1.0.0",
+  "description": "Projeto para construção de API para integrar com Wit.ai para atendimento robotizado humanizado.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./src/bin/www",
+    "server": "node server.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelrbo/basic-chat-wit.ai.git"
+  },
+  "keywords": [
+    "wit.ai",
+    "bot",
+    "chat"
+  ],
+  "author": "Samuel Ramon <samuelrbo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samuelrbo/basic-chat-wit.ai/issues"
+  },
+  "homepage": "https://github.com/samuelrbo/basic-chat-wit.ai#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  }
+}
