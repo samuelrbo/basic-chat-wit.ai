@@ -8,7 +8,7 @@ const client = new Wit({
   logger: new log.Logger(log.DEBUG),
 });
 
-client.message('Obrigado', {})
+client.message('What is the weather?', {})
   .then((data) => {
     console.log(data);
     console.log('Yay, got Wit.ai response:', JSON.stringify(data));
