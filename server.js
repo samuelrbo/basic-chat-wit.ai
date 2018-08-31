@@ -1,88 +1,20 @@
-/**
- * Module dependecies
- */
+require('dotenv').config({ silent: true });
+const { Wit, log } = require('node-wit');
 
-const app = require('./src/app');
-const debug = require('debug')('express-test:server');
-const http = require('http');
+console.log(process.env);
 
-/**
- * Get port from environment and store in Express.
- */
+const client = new Wit({
+  accessToken: process.env.WITAI_SERVER_ACCESS_TOKEN,
+  logger: new log.Logger(log.DEBUG),
+});
 
-const port = normilizePort(process.env.PORT || '3000');
-app.set('port', port);
+client.message('Obrigado', {})
+  .then((data) => {
+    console.log(data);
+    console.log('Yay, got Wit.ai response:', JSON.stringify(data));
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-/**
- * Create HTTP server
- */
-
-const server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false
- */
-
-function normilizePort (val) {
-  const port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
-/**
- * Event listener for HTTP server 'error' event.
- */
-
-function onError (error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
-
-  // handle specific listen errors with friendly message
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server 'listening' event
- */
-
-function onListening () {
-  const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}
+console.log(client.message('set an alarm tomorrow at 7am'));

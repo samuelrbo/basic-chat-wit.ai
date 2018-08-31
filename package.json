@@ -4,9 +4,7 @@
   "description": "Projeto para construção de API para integrar com Wit.ai para atendimento robotizado humanizado.",
   "main": "server.js",
   "scripts": {
-    "start": "node ./src/bin/www",
-    "server": "node server.js",
-    "test": "mocha"
+    "server": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -24,9 +22,7 @@
   },
   "homepage": "https://github.com/samuelrbo/basic-chat-wit.ai#readme",
   "dependencies": {
-    "cookie-parser": "^1.4.3",
-    "debug": "^3.1.0",
-    "express": "^4.16.3",
-    "morgan": "^1.9.0"
+    "dotenv": "^6.0.0",
+    "node-wit": "^5.0.0"
   }
 }
